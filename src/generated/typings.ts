@@ -4,7 +4,19 @@ export type Config = { language: string, theme: string, ui_accent_color: string 
 
 export type DefaultView = "Library" | "Artists" | "Playlists";
 
-export type IPCEvent = { "Unknown": string } | "PlaybackPlay" | "PlaybackPause" | "PlaybackStop" | "PlaybackPlayPause" | "PlaybackPrevious" | "PlaybackNext" | "PlaybackStart" | "LibraryScanProgress" | "GoToLibrary" | "GoToPlaylists" | "GoToSettings" | "JumpToPlayingTrack";
+export type DownloadJob = { id: string, 
+/**
+ * Spotify URL (track, album, playlist, artist) or a text search 
+ */
+query: string, status: DownloadStatus, output_dir: string, 
+/**
+ * Songs processed so far, as reported by spotdl ("N/M complete") 
+ */
+progress_current: number, progress_total: number, downloaded_count: number, skipped_count: number, last_line: string | null, log: Array<string>, error: string | null, };
+
+export type DownloadStatus = "Queued" | "Running" | "Done" | "Failed" | "Cancelled";
+
+export type IPCEvent = { "Unknown": string } | "PlaybackPlay" | "PlaybackPause" | "PlaybackStop" | "PlaybackPlayPause" | "PlaybackPrevious" | "PlaybackNext" | "PlaybackStart" | "LibraryScanProgress" | "DownloadsUpdate" | "DownloadFinished" | "GoToLibrary" | "GoToPlaylists" | "GoToSettings" | "JumpToPlayingTrack";
 
 /** ----------------------------------------------------------------------------
  * Playlist

@@ -57,6 +57,11 @@ msgstr "Shuffle"
 msgid "Album cover"
 msgstr "Album cover"
 
+#. placeholder {0}: job.query
+#: src/components/DownloadEvents.tsx:23
+msgid "Download failed: {0}"
+msgstr "Download failed: {0}"
+
 #: src/components/DropzoneImport.tsx:49
 msgid "{skippedItemsCount, plural, one {# invalid item ignored} other {# invalid items ignored}}"
 msgstr "{skippedItemsCount, plural, one {# invalid item ignored} other {# invalid items ignored}}"
@@ -100,6 +105,7 @@ msgid "Header"
 msgstr "Header"
 
 #: src/components/Header.tsx:53
+#: src/routes/downloads.tsx:112
 msgid "Queue"
 msgstr "Queue"
 
@@ -125,14 +131,19 @@ msgid "Playlists"
 msgstr "Playlists"
 
 #: src/components/Navigation.tsx:60
+#: src/routes/downloads.tsx:70
+msgid "Downloads"
+msgstr "Downloads"
+
+#: src/components/Navigation.tsx:63
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/Navigation.tsx:66
+#: src/components/Navigation.tsx:69
 msgid "Library status"
 msgstr "Library status"
 
-#: src/components/Navigation.tsx:90
+#: src/components/Navigation.tsx:93
 msgid "scanning tracks..."
 msgstr "scanning tracks..."
 
@@ -245,6 +256,7 @@ msgid "Remove tracks"
 msgstr "Remove tracks"
 
 #: src/components/TrackList.tsx:392
+#: src/routes/downloads.tsx:173
 #: src/routes/settings.library.tsx:100
 #: src/routes/settings.library.tsx:145
 #: src/routes/tracks.$trackID.tsx:257
@@ -326,13 +338,75 @@ msgstr "Your search returned no results"
 msgid "Volume"
 msgstr "Volume"
 
-#: src/routes/__root.tsx:82
+#: src/routes/__root.tsx:84
 msgid "Application main content"
 msgstr "Application main content"
 
 #: src/routes/artists.tsx:70
 msgid "Compilations"
 msgstr "Compilations"
+
+#: src/routes/downloads.tsx:73
+msgid "Paste a Spotify link (track, album, playlist, artist) or search for a song. Downloaded tracks are added to your library automatically."
+msgstr "Paste a Spotify link (track, album, playlist, artist) or search for a song. Downloaded tracks are added to your library automatically."
+
+#: src/routes/downloads.tsx:84
+msgid "https://open.spotify.com/... or \"artist - title\""
+msgstr "https://open.spotify.com/... or \"artist - title\""
+
+#: src/routes/downloads.tsx:85
+msgid "Spotify link or search"
+msgstr "Spotify link or search"
+
+#: src/routes/downloads.tsx:91
+msgid "Download"
+msgstr "Download"
+
+#: src/routes/downloads.tsx:97
+msgid "Saved to <0>{outputDir}</0>"
+msgstr "Saved to <0>{outputDir}</0>"
+
+#: src/routes/downloads.tsx:101
+msgid "Add a folder to your library in the settings first: downloads are saved there."
+msgstr "Add a folder to your library in the settings first: downloads are saved there."
+
+#: src/routes/downloads.tsx:121
+msgid "Clear finished"
+msgstr "Clear finished"
+
+#: src/routes/downloads.tsx:140
+msgid "Queued"
+msgstr "Queued"
+
+#: src/routes/downloads.tsx:141
+msgid "Downloading"
+msgstr "Downloading"
+
+#: src/routes/downloads.tsx:142
+msgid "Done"
+msgstr "Done"
+
+#: src/routes/downloads.tsx:143
+msgid "Failed"
+msgstr "Failed"
+
+#: src/routes/downloads.tsx:144
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. placeholder {0}: job.downloaded_count
+#: src/routes/downloads.tsx:153
+msgid "{0} downloaded"
+msgstr "{0} downloaded"
+
+#. placeholder {0}: job.skipped_count
+#: src/routes/downloads.tsx:154
+msgid "{0} already there"
+msgstr "{0} already there"
+
+#: src/routes/downloads.tsx:202
+msgid "Show log"
+msgstr "Show log"
 
 #: src/routes/playlists.$playlistID.tsx:72
 msgid "Remove from playlist"

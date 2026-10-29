@@ -77,6 +77,7 @@ fn main() {
         .plugin(plugins::default_view::init())
         .plugin(plugins::file_associations::init())
         .plugin(plugins::sleepblocker::init())
+        .plugin(plugins::spotdl::init())
         // Tauri integrations with the Operating System
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_dialog::init())

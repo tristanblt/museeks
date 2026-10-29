@@ -13,6 +13,7 @@ pub mod app_close;
 pub mod app_menu;
 pub mod cover;
 pub mod file_associations;
+pub mod spotdl;
 
 /**
  * Stores

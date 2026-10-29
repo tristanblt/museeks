@@ -49,6 +49,15 @@ fn main() {
             .plugin(
                 "sleepblocker",
                 tauri_build::InlinedPlugin::new().commands(&["enable", "disable"]),
+            )
+            .plugin(
+                "spotdl",
+                tauri_build::InlinedPlugin::new().commands(&[
+                    "get_downloads",
+                    "enqueue_download",
+                    "cancel_download",
+                    "clear_finished_downloads",
+                ]),
             ),
     )
     .expect("Failed to run tauri-build");

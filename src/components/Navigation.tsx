@@ -57,6 +57,9 @@ export default function Navigation() {
             <NavItem to="/playlists" title={t`Playlists`}>
               <Icon name="playlist" size={16} />
             </NavItem>
+            <NavItem to="/downloads" title={t`Downloads`}>
+              <Icon name="download" size={16} />
+            </NavItem>
             <NavItem to="/settings" title={t`Settings`}>
               <Icon name="settings" size={16} />
             </NavItem>

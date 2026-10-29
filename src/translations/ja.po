@@ -57,6 +57,11 @@ msgstr "シャッフル"
 msgid "Album cover"
 msgstr "アルバムカバー"
 
+#. placeholder {0}: job.query
+#: src/components/DownloadEvents.tsx:23
+msgid "Download failed: {0}"
+msgstr ""
+
 #: src/components/DropzoneImport.tsx:49
 msgid "{skippedItemsCount, plural, one {# invalid item ignored} other {# invalid items ignored}}"
 msgstr "{skippedItemsCount, plural, one {# 個の無効なアイテムが無視されました} other {# 個の無効なアイテムが無視されました}}"
@@ -100,6 +105,7 @@ msgid "Header"
 msgstr ""
 
 #: src/components/Header.tsx:53
+#: src/routes/downloads.tsx:112
 msgid "Queue"
 msgstr "キュー"
 
@@ -125,14 +131,19 @@ msgid "Playlists"
 msgstr "プレイリスト"
 
 #: src/components/Navigation.tsx:60
+#: src/routes/downloads.tsx:70
+msgid "Downloads"
+msgstr ""
+
+#: src/components/Navigation.tsx:63
 msgid "Settings"
 msgstr "設定"
 
-#: src/components/Navigation.tsx:66
+#: src/components/Navigation.tsx:69
 msgid "Library status"
 msgstr ""
 
-#: src/components/Navigation.tsx:90
+#: src/components/Navigation.tsx:93
 msgid "scanning tracks..."
 msgstr "トラックをスキャン中..."
 
@@ -245,6 +256,7 @@ msgid "Remove tracks"
 msgstr "トラックを削除"
 
 #: src/components/TrackList.tsx:392
+#: src/routes/downloads.tsx:173
 #: src/routes/settings.library.tsx:100
 #: src/routes/settings.library.tsx:145
 #: src/routes/tracks.$trackID.tsx:257
@@ -326,12 +338,74 @@ msgstr "検索結果が見つかりませんでした"
 msgid "Volume"
 msgstr "音量"
 
-#: src/routes/__root.tsx:82
+#: src/routes/__root.tsx:84
 msgid "Application main content"
 msgstr ""
 
 #: src/routes/artists.tsx:70
 msgid "Compilations"
+msgstr ""
+
+#: src/routes/downloads.tsx:73
+msgid "Paste a Spotify link (track, album, playlist, artist) or search for a song. Downloaded tracks are added to your library automatically."
+msgstr ""
+
+#: src/routes/downloads.tsx:84
+msgid "https://open.spotify.com/... or \"artist - title\""
+msgstr ""
+
+#: src/routes/downloads.tsx:85
+msgid "Spotify link or search"
+msgstr ""
+
+#: src/routes/downloads.tsx:91
+msgid "Download"
+msgstr ""
+
+#: src/routes/downloads.tsx:97
+msgid "Saved to <0>{outputDir}</0>"
+msgstr ""
+
+#: src/routes/downloads.tsx:101
+msgid "Add a folder to your library in the settings first: downloads are saved there."
+msgstr ""
+
+#: src/routes/downloads.tsx:121
+msgid "Clear finished"
+msgstr ""
+
+#: src/routes/downloads.tsx:140
+msgid "Queued"
+msgstr ""
+
+#: src/routes/downloads.tsx:141
+msgid "Downloading"
+msgstr ""
+
+#: src/routes/downloads.tsx:142
+msgid "Done"
+msgstr ""
+
+#: src/routes/downloads.tsx:143
+msgid "Failed"
+msgstr ""
+
+#: src/routes/downloads.tsx:144
+msgid "Cancelled"
+msgstr ""
+
+#. placeholder {0}: job.downloaded_count
+#: src/routes/downloads.tsx:153
+msgid "{0} downloaded"
+msgstr ""
+
+#. placeholder {0}: job.skipped_count
+#: src/routes/downloads.tsx:154
+msgid "{0} already there"
+msgstr ""
+
+#: src/routes/downloads.tsx:202
+msgid "Show log"
 msgstr ""
 
 #: src/routes/playlists.$playlistID.tsx:72

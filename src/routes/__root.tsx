@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 import SettingsAPI from '../api/SettingsAPI';
 import AppEvents from '../components/AppEvents';
+import DownloadEvents from '../components/DownloadEvents';
 import DropzoneImport from '../components/DropzoneImport';
 import { ErrorView, NotFoundView } from '../components/GlobalErrors';
 import GlobalKeyBindings from '../components/GlobalKeyBindings';
@@ -72,6 +73,7 @@ function ViewRoot() {
       <IPCPlayerEvents />
       <AppEvents />
       <LibraryEvents />
+      <DownloadEvents />
       <PlayerEvents />
       <GlobalKeyBindings />
 

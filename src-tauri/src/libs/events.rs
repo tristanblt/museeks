@@ -15,6 +15,9 @@ pub enum IPCEvent<'a> {
     PlaybackStart,
     // Scan-related events
     LibraryScanProgress,
+    // Download-related events
+    DownloadsUpdate,
+    DownloadFinished,
     // Menu-related events
     GoToLibrary,
     GoToPlaylists,

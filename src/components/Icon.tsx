@@ -3,6 +3,7 @@ import { error } from '@tauri-apps/plugin-log';
 
 import chevronDown from '../assets/icons/chevron-down.svg?react';
 import chevronUp from '../assets/icons/chevron-up.svg?react';
+import download from '../assets/icons/download.svg?react';
 import globe from '../assets/icons/globe.svg?react';
 import list from '../assets/icons/list.svg?react';
 import microphone from '../assets/icons/microphone.svg?react';
@@ -29,6 +30,7 @@ const icons: Record<
 > = {
   chevronDown,
   chevronUp,
+  download,
   globe,
   list,
   microphone,

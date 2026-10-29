@@ -53,7 +53,11 @@
     "database:allow-reset",
     "default-view:allow-set",
     "sleepblocker:allow-enable",
-    "sleepblocker:allow-disable"
+    "sleepblocker:allow-disable",
+    "spotdl:allow-get-downloads",
+    "spotdl:allow-enqueue-download",
+    "spotdl:allow-cancel-download",
+    "spotdl:allow-clear-finished-downloads"
   ],
   "platforms": ["linux", "macOS", "windows"]
 }
