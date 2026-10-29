@@ -94,11 +94,29 @@ class DatabaseBridge implements DatabaseBridgeInterface {
   }
 
   async getAllArtists(): Promise<Array<string>> {
-    return [];
+    return [...new Set(tracks.map((track) => track.album_artist))].sort();
   }
 
-  async getArtistTracks(_artist: string): Promise<Array<TrackGroup>> {
-    return [];
+  async getArtistTracks(artist: string): Promise<Array<TrackGroup>> {
+    const artistTracks = tracks.filter(
+      (track) => track.album_artist === artist,
+    );
+    const albums = [...new Set(artistTracks.map((track) => track.album))];
+
+    return albums.map((album) => {
+      const albumTracks = artistTracks.filter((track) => track.album === album);
+
+      return {
+        label: album,
+        genres: [...new Set(albumTracks.flatMap((track) => track.genres))],
+        duration: albumTracks.reduce(
+          (total, track) => total + track.duration,
+          0,
+        ),
+        year: albumTracks[0].year,
+        tracks: albumTracks,
+      };
+    });
   }
 
   async hasCompilations(): Promise<boolean> {
@@ -110,11 +128,38 @@ class DatabaseBridge implements DatabaseBridgeInterface {
   }
 
   async getAlbums(): Promise<Array<Album>> {
-    return [];
+    const albums = new Map<string, Album>();
+
+    for (const track of tracks) {
+      const key = `${track.album_artist}\u0000${track.album}`;
+      const album = albums.get(key);
+
+      if (album == null) {
+        albums.set(key, {
+          name: track.album,
+          album_artist: track.album_artist,
+          year: track.year,
+          track_count: 1,
+          duration: track.duration,
+          is_compilation: track.is_compilation,
+          cover_path: track.path,
+        });
+      } else {
+        album.track_count += 1;
+        album.duration += track.duration;
+      }
+    }
+
+    return [...albums.values()];
   }
 
-  async getAlbumTracks(): Promise<Array<Track>> {
-    return [];
+  async getAlbumTracks(
+    albumArtist: string,
+    album: string,
+  ): Promise<Array<Track>> {
+    return tracks.filter(
+      (track) => track.album_artist === albumArtist && track.album === album,
+    );
   }
 
   async getAllPlaylists(): Promise<Array<Playlist>> {
