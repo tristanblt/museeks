@@ -59,6 +59,7 @@ fn main() {
                     "enqueue_download",
                     "cancel_download",
                     "clear_finished_downloads",
+                    "resolve_album",
                 ]),
             ),
     )

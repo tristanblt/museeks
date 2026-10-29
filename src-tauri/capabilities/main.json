@@ -59,7 +59,8 @@
     "spotdl:allow-get-downloads",
     "spotdl:allow-enqueue-download",
     "spotdl:allow-cancel-download",
-    "spotdl:allow-clear-finished-downloads"
+    "spotdl:allow-clear-finished-downloads",
+    "spotdl:allow-resolve-album"
   ],
   "platforms": ["linux", "macOS", "windows"]
 }

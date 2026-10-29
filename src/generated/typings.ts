@@ -36,6 +36,11 @@ export type Playlist = { id: string, name: string, tracks: Array<string>, import
 export type Repeat = "All" | "One" | "None";
 
 /**
+ * Spotify album found from one of its tracks
+ */
+export type ResolvedAlbum = { url: string, name: string, artist: string, track_count: number, };
+
+/**
  * Scan progress
  */
 export type ScanProgress = { current: number, total: number, };

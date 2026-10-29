@@ -2,13 +2,15 @@ import { Plural, Trans, useLingui } from '@lingui/react/macro';
 import * as stylex from '@stylexjs/stylex';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, notFound } from '@tanstack/react-router';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import AlbumsAPI, { getAlbumQueueOrigin } from '../api/AlbumsAPI';
 import AlbumCover, { useTrackCover } from '../components/AlbumCover';
+import AlbumFill from '../components/AlbumFill';
 import Icon from '../components/Icon';
 import TrackList from '../components/TrackList';
 import View from '../elements/View';
+import type { Track } from '../generated/typings';
 import useGlobalTrackListStatus from '../hooks/useGlobalTrackListStatus';
 import DatabaseBridge from '../lib/bridge-database';
 import { configQuery } from '../lib/queries';
@@ -39,6 +41,29 @@ function formatLongDuration(seconds: number): string {
   return hours > 0 ? `${hours} h ${minutes} min` : `${minutes} min`;
 }
 
+/**
+ * Number of tracks the album should have, according to the "track x of y"
+ * tags (per disc), or null if unknown
+ */
+function getExpectedTrackCount(tracks: Array<Track>): number | null {
+  const tracksOfByDisc = new Map<number, number>();
+
+  for (const track of tracks) {
+    if (track.track_of == null) return null;
+
+    const disc = track.disk_no ?? 1;
+    tracksOfByDisc.set(
+      disc,
+      Math.max(tracksOfByDisc.get(disc) ?? 0, track.track_of),
+    );
+  }
+
+  let total = 0;
+  for (const count of tracksOfByDisc.values()) total += count;
+
+  return total > 0 ? total : null;
+}
+
 function ViewAlbumDetails() {
   const { tracks, playlists } = Route.useLoaderData();
   const { albumArtist, album } = Route.useParams();
@@ -59,6 +84,15 @@ function ViewAlbumDetails() {
   const duration = tracks.reduce((total, track) => total + track.duration, 0);
   const genres = [...new Set(tracks.flatMap((track) => track.genres))];
   const isCompilation = tracks.some((track) => track.is_compilation);
+
+  const expectedTrackCount = getExpectedTrackCount(tracks);
+  const missingTrackCount =
+    expectedTrackCount != null
+      ? Math.max(0, expectedTrackCount - tracks.length)
+      : 0;
+
+  const [isFillOpen, setIsFillOpen] = useState(false);
+  useEffect(() => setIsFillOpen(false), [albumArtist, album]);
 
   return (
     <View>
@@ -113,6 +147,15 @@ function ViewAlbumDetails() {
                   </span>
                   <span>{formatLongDuration(duration)}</span>
                   {genres.length > 0 && <span>{genres.join(', ')}</span>}
+                  {missingTrackCount > 0 && (
+                    <span {...stylex.props(styles.missing)}>
+                      <Plural
+                        value={missingTrackCount}
+                        one="# missing track"
+                        other="# missing tracks"
+                      />
+                    </span>
+                  )}
                 </div>
 
                 <div {...stylex.props(styles.actions)}>
@@ -141,7 +184,31 @@ function ViewAlbumDetails() {
                     <Icon name="shuffle" size={12} />
                     <Trans>Shuffle</Trans>
                   </button>
+                  <button
+                    type="button"
+                    data-museeks-action
+                    aria-expanded={isFillOpen}
+                    title={t`Download the missing tracks with spotdl`}
+                    onClick={() => setIsFillOpen((open) => !open)}
+                    {...stylex.props(
+                      styles.action,
+                      styles.actionSecondary,
+                      missingTrackCount > 0 && styles.actionHighlight,
+                    )}
+                  >
+                    <Icon name="download" size={12} />
+                    <Trans>Complete</Trans>
+                  </button>
                 </div>
+
+                {isFillOpen && (
+                  <AlbumFill
+                    key={`${albumArtist}\u0000${album}`}
+                    album={album}
+                    track={tracks[0]}
+                    onClose={() => setIsFillOpen(false)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -297,6 +364,12 @@ const styles = stylex.create({
       default: 'none',
       ':hover': 'brightness(1.08)',
     },
+  },
+  actionHighlight: {
+    color: 'var(--warning-color)',
+  },
+  missing: {
+    color: 'var(--warning-color)',
   },
   actionSecondary: {
     color: 'var(--text)',

@@ -1,6 +1,6 @@
 import { invoke } from '@tauri-apps/api/core';
 
-import type { DownloadJob } from '../generated/typings';
+import type { DownloadJob, ResolvedAlbum } from '../generated/typings';
 
 /**
  * Bridge for the UI to manage spotdl downloads (queue processed by the backend)
@@ -20,6 +20,11 @@ const SpotdlBridge = {
 
   async clearFinished(): Promise<void> {
     return invoke('plugin:spotdl|clear_finished_downloads');
+  },
+
+  /** Find the Spotify album of a track ("artist - title album") */
+  async resolveAlbum(query: string): Promise<ResolvedAlbum> {
+    return invoke('plugin:spotdl|resolve_album', { query });
   },
 };
 

@@ -52,7 +52,7 @@ msgstr ""
 
 #: src/components/AlbumCard.tsx:37
 #: src/components/PlayerControls.tsx:24
-#: src/routes/albums.$albumArtist.$album.tsx:128
+#: src/routes/albums.$albumArtist.$album.tsx:171
 msgid "Play"
 msgstr "Плей"
 
@@ -61,23 +61,97 @@ msgstr "Плей"
 msgid "Play {0}"
 msgstr ""
 
+#: src/components/AlbumFill.tsx:125
+msgid "Complete the album with spotdl"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:130
+msgid "Looking for the album on Spotify…"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:135
+msgid "The album could not be found automatically, paste its Spotify link below."
+msgstr ""
+
+#. placeholder {0}: resolution.album.name
+#. placeholder {1}: resolution.album.artist
+#. placeholder {2}: resolution.album.track_count
+#: src/components/AlbumFill.tsx:143
+msgid "Found <0>{0}</0> by {1} · {2, plural, one {# track} other {# tracks}}"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:155
+msgid "(the name differs, check it is the right album)"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:176
+#: src/routes/downloads.tsx:91
+msgid "Download"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:183
+#: src/components/AlbumFill.tsx:269
+#: src/components/TrackList.tsx:392
+#: src/routes/downloads.tsx:173
+#: src/routes/settings.library.tsx:100
+#: src/routes/settings.library.tsx:145
+#: src/routes/tracks.$trackID.tsx:257
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/components/AlbumFill.tsx:187
+msgid "Paste another Spotify album link if this is not the right one. Tracks you already have are skipped."
+msgstr ""
+
+#: src/components/AlbumFill.tsx:206
+msgid "Waiting for the other downloads to finish…"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:213
+msgid "Completing the album…"
+msgstr ""
+
+#. placeholder {0}: job.downloaded_count
+#: src/components/AlbumFill.tsx:236
+msgid "{0, plural, one {# track added to the album} other {# tracks added to the album}}"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:242
+msgid "Nothing new to download, the album is complete."
+msgstr ""
+
+#. placeholder {0}: job.error
+#. placeholder {0}: job.query
+#: src/components/AlbumFill.tsx:249
+#: src/components/DownloadEvents.tsx:23
+msgid "Download failed: {0}"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:255
+msgid "Download cancelled."
+msgstr ""
+
+#: src/components/AlbumFill.tsx:261
+msgid "See in downloads"
+msgstr ""
+
+#: src/components/AlbumFill.tsx:275
+#: src/components/AlbumFill.tsx:278
+msgid "Close"
+msgstr ""
+
 #: src/components/ButtonRepeat.tsx:18
 msgid "Repeat"
 msgstr "Повтор"
 
 #: src/components/ButtonShuffle.tsx:12
-#: src/routes/albums.$albumArtist.$album.tsx:142
+#: src/routes/albums.$albumArtist.$album.tsx:185
 msgid "Shuffle"
 msgstr "Шафл"
 
 #: src/components/Cover.tsx:34
 msgid "Album cover"
 msgstr "Обложка альбома"
-
-#. placeholder {0}: job.query
-#: src/components/DownloadEvents.tsx:23
-msgid "Download failed: {0}"
-msgstr ""
 
 #: src/components/DropzoneImport.tsx:49
 msgid "{skippedItemsCount, plural, one {# invalid item ignored} other {# invalid items ignored}}"
@@ -136,7 +210,7 @@ msgid "Library"
 msgstr "Библиотека"
 
 #: src/components/Navigation.tsx:54
-#: src/routes/albums.$albumArtist.$album.tsx:78
+#: src/routes/albums.$albumArtist.$album.tsx:112
 #: src/routes/albums.index.tsx:101
 msgid "Albums"
 msgstr ""
@@ -274,14 +348,6 @@ msgstr "Вы уверены, что хотите удалить {0} трек(о�
 msgid "Remove tracks"
 msgstr "Удалить треки"
 
-#: src/components/TrackList.tsx:392
-#: src/routes/downloads.tsx:173
-#: src/routes/settings.library.tsx:100
-#: src/routes/settings.library.tsx:145
-#: src/routes/tracks.$trackID.tsx:257
-msgid "Cancel"
-msgstr "Отмена"
-
 #: src/components/TrackList.tsx:393
 #: src/routes/settings.library.tsx:64
 msgid "Remove"
@@ -296,7 +362,7 @@ msgstr ""
 #. placeholder {0}: tracks.length
 #: src/components/TrackListGrouped.tsx:115
 #: src/components/TrackListStatus.tsx:11
-#: src/routes/albums.$albumArtist.$album.tsx:108
+#: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "{0, plural, one {# track} other {# tracks}}"
 msgstr "{0, plural, one {# трек} few {# трека} many {# треков}}"
 
@@ -321,7 +387,7 @@ msgid "Artist"
 msgstr "Исполнитель"
 
 #: src/components/TrackListHeader.tsx:41
-#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/albums.$albumArtist.$album.tsx:122
 #: src/routes/tracks.$trackID.tsx:99
 msgid "Album"
 msgstr "Альбом"
@@ -365,13 +431,25 @@ msgstr "Громкость"
 msgid "Application main content"
 msgstr ""
 
-#: src/routes/albums.$albumArtist.$album.tsx:83
+#: src/routes/albums.$albumArtist.$album.tsx:117
 msgid "Cover of {album}"
 msgstr ""
 
-#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/albums.$albumArtist.$album.tsx:122
 #: src/routes/tracks.$trackID.tsx:231
 msgid "Compilation"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:152
+msgid "{missingTrackCount, plural, one {# missing track} other {# missing tracks}}"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:191
+msgid "Download the missing tracks with spotdl"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:200
+msgid "Complete"
 msgstr ""
 
 #: src/routes/albums.index.tsx:82
@@ -410,10 +488,6 @@ msgstr ""
 
 #: src/routes/downloads.tsx:85
 msgid "Spotify link or search"
-msgstr ""
-
-#: src/routes/downloads.tsx:91
-msgid "Download"
 msgstr ""
 
 #: src/routes/downloads.tsx:97

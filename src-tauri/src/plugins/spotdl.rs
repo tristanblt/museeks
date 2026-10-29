@@ -372,6 +372,82 @@ fn cancel_download<R: Runtime>(app_handle: AppHandle<R>, state: State<SpotdlStat
     emit_jobs(&app_handle);
 }
 
+/**
+ * Spotify album found from one of its tracks
+ */
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export, export_to = "../../src/generated/typings.ts")]
+pub struct ResolvedAlbum {
+    url: String,
+    name: String,
+    artist: String,
+    track_count: u32,
+}
+
+/**
+ * Song as saved by `spotdl save` (only the fields we need)
+ */
+#[derive(Deserialize)]
+struct SavedSong {
+    album_id: String,
+    album_name: String,
+    album_artist: String,
+    tracks_count: u32,
+}
+
+/**
+ * Find the Spotify album of a track, via a track search ("artist - title album").
+ * Spotify album search does not work with spotdl's default credentials,
+ * but track search does, and tells which album the track belongs to.
+ */
+#[tauri::command]
+async fn resolve_album(query: String) -> AnyResult<ResolvedAlbum> {
+    let search_path = get_search_path();
+    let spotdl = find_spotdl(&search_path).ok_or_else(|| {
+        MuseeksError::Unknown(anyhow::anyhow!(
+            "spotdl was not found, make sure it is installed and in your PATH"
+        ))
+    })?;
+
+    let save_file = std::env::temp_dir().join(format!("museeks-{}.spotdl", Uuid::new_v4()));
+
+    info!("Resolving album with {:?} save {:?}", spotdl, query);
+
+    let output = Command::new(spotdl)
+        .arg("save")
+        .arg(&query)
+        .arg("--save-file")
+        .arg(&save_file)
+        .arg("--simple-tui")
+        .env("PATH", search_path)
+        .env("PYTHONIOENCODING", "utf-8")
+        .stdin(Stdio::null())
+        .output()
+        .await?;
+
+    let saved = tokio::fs::read_to_string(&save_file).await;
+    let _ = tokio::fs::remove_file(&save_file).await;
+
+    let song = saved
+        .ok()
+        .and_then(|content| serde_json::from_str::<Vec<SavedSong>>(&content).ok())
+        .and_then(|songs| songs.into_iter().next())
+        .ok_or_else(|| {
+            warn!(
+                "Album resolution failed: {}",
+                String::from_utf8_lossy(&output.stdout)
+            );
+            MuseeksError::Unknown(anyhow::anyhow!("No album found on Spotify"))
+        })?;
+
+    Ok(ResolvedAlbum {
+        url: format!("https://open.spotify.com/album/{}", song.album_id),
+        name: song.album_name,
+        artist: song.album_artist,
+        track_count: song.tracks_count,
+    })
+}
+
 #[tauri::command]
 fn clear_finished_downloads<R: Runtime>(app_handle: AppHandle<R>, state: State<SpotdlState>) {
     state
@@ -392,7 +468,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             get_downloads,
             enqueue_download,
             cancel_download,
-            clear_finished_downloads
+            clear_finished_downloads,
+            resolve_album
         ])
         .setup(|app_handle, _api| {
             app_handle.manage(SpotdlState::default());
