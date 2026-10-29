@@ -45,11 +45,28 @@ msgstr "Доступна версия Museeks {0}, проверьте https://mu
 msgid "Museeks {currentVersion} is the latest version available."
 msgstr "Museeks {currentVersion} является самой последней доступной версией."
 
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:31
+msgid "Cover of {0}"
+msgstr ""
+
+#: src/components/AlbumCard.tsx:37
+#: src/components/PlayerControls.tsx:24
+#: src/routes/albums.$albumArtist.$album.tsx:128
+msgid "Play"
+msgstr "Плей"
+
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:38
+msgid "Play {0}"
+msgstr ""
+
 #: src/components/ButtonRepeat.tsx:18
 msgid "Repeat"
 msgstr "Повтор"
 
 #: src/components/ButtonShuffle.tsx:12
+#: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "Shuffle"
 msgstr "Шафл"
 
@@ -119,41 +136,43 @@ msgid "Library"
 msgstr "Библиотека"
 
 #: src/components/Navigation.tsx:54
+#: src/routes/albums.$albumArtist.$album.tsx:78
+#: src/routes/albums.index.tsx:101
+msgid "Albums"
+msgstr ""
+
+#: src/components/Navigation.tsx:57
 #: src/routes/artists.tsx:64
 #: src/routes/settings.ui.tsx:148
 msgid "Artists"
 msgstr "Исполнители"
 
-#: src/components/Navigation.tsx:57
+#: src/components/Navigation.tsx:60
 #: src/routes/playlists.tsx:165
 #: src/routes/settings.ui.tsx:151
 msgid "Playlists"
 msgstr "Плейлисты"
 
-#: src/components/Navigation.tsx:60
+#: src/components/Navigation.tsx:63
 #: src/routes/downloads.tsx:70
 msgid "Downloads"
 msgstr ""
 
-#: src/components/Navigation.tsx:63
+#: src/components/Navigation.tsx:66
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/components/Navigation.tsx:69
+#: src/components/Navigation.tsx:72
 msgid "Library status"
 msgstr ""
 
-#: src/components/Navigation.tsx:93
+#: src/components/Navigation.tsx:96
 msgid "scanning tracks..."
 msgstr "сканирование треков..."
 
 #: src/components/PlayerControls.tsx:18
 msgid "Previous"
 msgstr "Предыдущий"
-
-#: src/components/PlayerControls.tsx:24
-msgid "Play"
-msgstr "Плей"
 
 #: src/components/PlayerControls.tsx:24
 msgid "Pause"
@@ -277,6 +296,7 @@ msgstr ""
 #. placeholder {0}: tracks.length
 #: src/components/TrackListGrouped.tsx:115
 #: src/components/TrackListStatus.tsx:11
+#: src/routes/albums.$albumArtist.$album.tsx:108
 msgid "{0, plural, one {# track} other {# tracks}}"
 msgstr "{0, plural, one {# трек} few {# трека} many {# треков}}"
 
@@ -285,6 +305,7 @@ msgid "Track list sorting options"
 msgstr ""
 
 #: src/components/TrackListHeader.tsx:26
+#: src/routes/albums.index.tsx:81
 #: src/routes/tracks.$trackID.tsx:88
 msgid "Title"
 msgstr "Заголовок"
@@ -295,10 +316,12 @@ msgid "Duration"
 msgstr "Длительность"
 
 #: src/components/TrackListHeader.tsx:36
+#: src/routes/albums.index.tsx:80
 msgid "Artist"
 msgstr "Исполнитель"
 
 #: src/components/TrackListHeader.tsx:41
+#: src/routes/albums.$albumArtist.$album.tsx:88
 #: src/routes/tracks.$trackID.tsx:99
 msgid "Album"
 msgstr "Альбом"
@@ -340,6 +363,37 @@ msgstr "Громкость"
 
 #: src/routes/__root.tsx:84
 msgid "Application main content"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:83
+msgid "Cover of {album}"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/tracks.$trackID.tsx:231
+msgid "Compilation"
+msgstr ""
+
+#: src/routes/albums.index.tsx:82
+#: src/routes/tracks.$trackID.tsx:154
+msgid "Year"
+msgstr "Год"
+
+#: src/routes/albums.index.tsx:89
+msgid "There are no albums in your library yet."
+msgstr ""
+
+#. placeholder {0}: visibleAlbums.length
+#: src/routes/albums.index.tsx:104
+msgid "{0, plural, one {# album} other {# albums}}"
+msgstr ""
+
+#: src/routes/albums.index.tsx:111
+msgid "Sort albums by"
+msgstr ""
+
+#: src/routes/albums.index.tsx:133
+msgid "No album matches your search."
 msgstr ""
 
 #: src/routes/artists.tsx:70
@@ -693,10 +747,6 @@ msgstr "Вы можете указать несколько исполнител
 msgid "You can add multiple genres with commas"
 msgstr "Вы можете указать несколько жанров через запятую"
 
-#: src/routes/tracks.$trackID.tsx:154
-msgid "Year"
-msgstr "Год"
-
 #: src/routes/tracks.$trackID.tsx:168
 msgid "Track Nº"
 msgstr "Трек Nº"
@@ -709,10 +759,6 @@ msgstr "из"
 #: src/routes/tracks.$trackID.tsx:200
 msgid "Disk Nº"
 msgstr "Диск Nº"
-
-#: src/routes/tracks.$trackID.tsx:231
-msgid "Compilation"
-msgstr ""
 
 #: src/routes/tracks.$trackID.tsx:232
 msgid "Group this track with other tracks from the same compilation, regardless of the artist names."

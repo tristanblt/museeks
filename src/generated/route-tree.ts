@@ -14,6 +14,7 @@ import { Route as PlaylistsRouteImport } from './../routes/playlists'
 import { Route as LibraryRouteImport } from './../routes/library'
 import { Route as DownloadsRouteImport } from './../routes/downloads'
 import { Route as ArtistsRouteImport } from './../routes/artists'
+import { Route as AlbumsIndexRouteImport } from './../routes/albums.index'
 import { Route as TracksTrackIDRouteImport } from './../routes/tracks.$trackID'
 import { Route as SettingsUiRouteImport } from './../routes/settings.ui'
 import { Route as SettingsLibraryRouteImport } from './../routes/settings.library'
@@ -22,6 +23,7 @@ import { Route as SettingsAboutRouteImport } from './../routes/settings.about'
 import { Route as PlaylistsPlaylistIDRouteImport } from './../routes/playlists.$playlistID'
 import { Route as ArtistsArtistIDRouteImport } from './../routes/artists.$artistID'
 import { Route as ArtistsPresetsCompilationsRouteImport } from './../routes/artists.presets.compilations'
+import { Route as AlbumsAlbumArtistAlbumRouteImport } from './../routes/albums.$albumArtist.$album'
 
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
@@ -46,6 +48,11 @@ const DownloadsRoute = DownloadsRouteImport.update({
 const ArtistsRoute = ArtistsRouteImport.update({
   id: '/artists',
   path: '/artists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlbumsIndexRoute = AlbumsIndexRouteImport.update({
+  id: '/albums/',
+  path: '/albums/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TracksTrackIDRoute = TracksTrackIDRouteImport.update({
@@ -89,6 +96,11 @@ const ArtistsPresetsCompilationsRoute =
     path: '/presets/compilations',
     getParentRoute: () => ArtistsRoute,
   } as any)
+const AlbumsAlbumArtistAlbumRoute = AlbumsAlbumArtistAlbumRouteImport.update({
+  id: '/albums/$albumArtist/$album',
+  path: '/albums/$albumArtist/$album',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/artists': typeof ArtistsRouteWithChildren
@@ -103,6 +115,8 @@ export interface FileRoutesByFullPath {
   '/settings/library': typeof SettingsLibraryRoute
   '/settings/ui': typeof SettingsUiRoute
   '/tracks/$trackID': typeof TracksTrackIDRoute
+  '/albums/': typeof AlbumsIndexRoute
+  '/albums/$albumArtist/$album': typeof AlbumsAlbumArtistAlbumRoute
   '/artists/presets/compilations': typeof ArtistsPresetsCompilationsRoute
 }
 export interface FileRoutesByTo {
@@ -118,6 +132,8 @@ export interface FileRoutesByTo {
   '/settings/library': typeof SettingsLibraryRoute
   '/settings/ui': typeof SettingsUiRoute
   '/tracks/$trackID': typeof TracksTrackIDRoute
+  '/albums': typeof AlbumsIndexRoute
+  '/albums/$albumArtist/$album': typeof AlbumsAlbumArtistAlbumRoute
   '/artists/presets/compilations': typeof ArtistsPresetsCompilationsRoute
 }
 export interface FileRoutesById {
@@ -134,6 +150,8 @@ export interface FileRoutesById {
   '/settings/library': typeof SettingsLibraryRoute
   '/settings/ui': typeof SettingsUiRoute
   '/tracks/$trackID': typeof TracksTrackIDRoute
+  '/albums/': typeof AlbumsIndexRoute
+  '/albums/$albumArtist/$album': typeof AlbumsAlbumArtistAlbumRoute
   '/artists/presets/compilations': typeof ArtistsPresetsCompilationsRoute
 }
 export interface FileRouteTypes {
@@ -151,6 +169,8 @@ export interface FileRouteTypes {
     | '/settings/library'
     | '/settings/ui'
     | '/tracks/$trackID'
+    | '/albums/'
+    | '/albums/$albumArtist/$album'
     | '/artists/presets/compilations'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -166,6 +186,8 @@ export interface FileRouteTypes {
     | '/settings/library'
     | '/settings/ui'
     | '/tracks/$trackID'
+    | '/albums'
+    | '/albums/$albumArtist/$album'
     | '/artists/presets/compilations'
   id:
     | '__root__'
@@ -181,6 +203,8 @@ export interface FileRouteTypes {
     | '/settings/library'
     | '/settings/ui'
     | '/tracks/$trackID'
+    | '/albums/'
+    | '/albums/$albumArtist/$album'
     | '/artists/presets/compilations'
   fileRoutesById: FileRoutesById
 }
@@ -191,6 +215,8 @@ export interface RootRouteChildren {
   PlaylistsRoute: typeof PlaylistsRouteWithChildren
   SettingsRoute: typeof SettingsRouteWithChildren
   TracksTrackIDRoute: typeof TracksTrackIDRoute
+  AlbumsIndexRoute: typeof AlbumsIndexRoute
+  AlbumsAlbumArtistAlbumRoute: typeof AlbumsAlbumArtistAlbumRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -228,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/artists'
       fullPath: '/artists'
       preLoaderRoute: typeof ArtistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/albums/': {
+      id: '/albums/'
+      path: '/albums'
+      fullPath: '/albums/'
+      preLoaderRoute: typeof AlbumsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tracks/$trackID': {
@@ -286,6 +319,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtistsPresetsCompilationsRouteImport
       parentRoute: typeof ArtistsRoute
     }
+    '/albums/$albumArtist/$album': {
+      id: '/albums/$albumArtist/$album'
+      path: '/albums/$albumArtist/$album'
+      fullPath: '/albums/$albumArtist/$album'
+      preLoaderRoute: typeof AlbumsAlbumArtistAlbumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -339,6 +379,8 @@ const rootRouteChildren: RootRouteChildren = {
   PlaylistsRoute: PlaylistsRouteWithChildren,
   SettingsRoute: SettingsRouteWithChildren,
   TracksTrackIDRoute: TracksTrackIDRoute,
+  AlbumsIndexRoute: AlbumsIndexRoute,
+  AlbumsAlbumArtistAlbumRoute: AlbumsAlbumArtistAlbumRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

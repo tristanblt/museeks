@@ -41,6 +41,20 @@ export function goToPlayingTrack(
       });
       break;
     }
+    case 'album': {
+      void navigate({
+        to: '/albums/$albumArtist/$album',
+        params: {
+          albumArtist: queueOrigin.albumArtist,
+          album: queueOrigin.album,
+        },
+        replace: true,
+        search: {
+          jump_to_playing_track: true,
+        },
+      });
+      break;
+    }
     case 'compilations': {
       void navigate({
         to: '/artists/presets/compilations',

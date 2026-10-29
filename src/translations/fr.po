@@ -45,11 +45,28 @@ msgstr "Museeks {0} est disponible, consultez https://museeks.io !"
 msgid "Museeks {currentVersion} is the latest version available."
 msgstr "Museeks {currentVersion} est la dernière version disponible."
 
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:31
+msgid "Cover of {0}"
+msgstr "Pochette de {0}"
+
+#: src/components/AlbumCard.tsx:37
+#: src/components/PlayerControls.tsx:24
+#: src/routes/albums.$albumArtist.$album.tsx:128
+msgid "Play"
+msgstr "Lecture"
+
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:38
+msgid "Play {0}"
+msgstr "Lire {0}"
+
 #: src/components/ButtonRepeat.tsx:18
 msgid "Repeat"
 msgstr "Lecture en boucle"
 
 #: src/components/ButtonShuffle.tsx:12
+#: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "Shuffle"
 msgstr "Lecture aléatoire"
 
@@ -119,41 +136,43 @@ msgid "Library"
 msgstr "Bibliothèque"
 
 #: src/components/Navigation.tsx:54
+#: src/routes/albums.$albumArtist.$album.tsx:78
+#: src/routes/albums.index.tsx:101
+msgid "Albums"
+msgstr "Albums"
+
+#: src/components/Navigation.tsx:57
 #: src/routes/artists.tsx:64
 #: src/routes/settings.ui.tsx:148
 msgid "Artists"
 msgstr "Artistes"
 
-#: src/components/Navigation.tsx:57
+#: src/components/Navigation.tsx:60
 #: src/routes/playlists.tsx:165
 #: src/routes/settings.ui.tsx:151
 msgid "Playlists"
 msgstr "Playlists"
 
-#: src/components/Navigation.tsx:60
+#: src/components/Navigation.tsx:63
 #: src/routes/downloads.tsx:70
 msgid "Downloads"
 msgstr "Téléchargements"
 
-#: src/components/Navigation.tsx:63
+#: src/components/Navigation.tsx:66
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/components/Navigation.tsx:69
+#: src/components/Navigation.tsx:72
 msgid "Library status"
 msgstr "Statut de la bibliothèque"
 
-#: src/components/Navigation.tsx:93
+#: src/components/Navigation.tsx:96
 msgid "scanning tracks..."
 msgstr "scan des pistes..."
 
 #: src/components/PlayerControls.tsx:18
 msgid "Previous"
 msgstr "Précédent"
-
-#: src/components/PlayerControls.tsx:24
-msgid "Play"
-msgstr "Lecture"
 
 #: src/components/PlayerControls.tsx:24
 msgid "Pause"
@@ -277,6 +296,7 @@ msgstr "Liste des pistes"
 #. placeholder {0}: tracks.length
 #: src/components/TrackListGrouped.tsx:115
 #: src/components/TrackListStatus.tsx:11
+#: src/routes/albums.$albumArtist.$album.tsx:108
 msgid "{0, plural, one {# track} other {# tracks}}"
 msgstr "{0, plural, one {# piste} other {# pistes}}"
 
@@ -285,6 +305,7 @@ msgid "Track list sorting options"
 msgstr "Options de tri de la liste des pistes"
 
 #: src/components/TrackListHeader.tsx:26
+#: src/routes/albums.index.tsx:81
 #: src/routes/tracks.$trackID.tsx:88
 msgid "Title"
 msgstr "Titre"
@@ -295,10 +316,12 @@ msgid "Duration"
 msgstr "Durée"
 
 #: src/components/TrackListHeader.tsx:36
+#: src/routes/albums.index.tsx:80
 msgid "Artist"
 msgstr "Artiste"
 
 #: src/components/TrackListHeader.tsx:41
+#: src/routes/albums.$albumArtist.$album.tsx:88
 #: src/routes/tracks.$trackID.tsx:99
 msgid "Album"
 msgstr "Album"
@@ -341,6 +364,37 @@ msgstr "Volume"
 #: src/routes/__root.tsx:84
 msgid "Application main content"
 msgstr "Contenu principal de l'application"
+
+#: src/routes/albums.$albumArtist.$album.tsx:83
+msgid "Cover of {album}"
+msgstr "Pochette de {album}"
+
+#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/tracks.$trackID.tsx:231
+msgid "Compilation"
+msgstr "Compilation"
+
+#: src/routes/albums.index.tsx:82
+#: src/routes/tracks.$trackID.tsx:154
+msgid "Year"
+msgstr "Année"
+
+#: src/routes/albums.index.tsx:89
+msgid "There are no albums in your library yet."
+msgstr "Il n'y a pas encore d'album dans votre bibliothèque."
+
+#. placeholder {0}: visibleAlbums.length
+#: src/routes/albums.index.tsx:104
+msgid "{0, plural, one {# album} other {# albums}}"
+msgstr "{0, plural, one {# album} other {# albums}}"
+
+#: src/routes/albums.index.tsx:111
+msgid "Sort albums by"
+msgstr "Trier les albums par"
+
+#: src/routes/albums.index.tsx:133
+msgid "No album matches your search."
+msgstr "Aucun album ne correspond à votre recherche."
 
 #: src/routes/artists.tsx:70
 msgid "Compilations"
@@ -693,10 +747,6 @@ msgstr "Vous pouvez ajouter plusieurs artistes avec des virgules"
 msgid "You can add multiple genres with commas"
 msgstr "Vous pouvez ajouter plusieurs genres avec des virgules"
 
-#: src/routes/tracks.$trackID.tsx:154
-msgid "Year"
-msgstr "Année"
-
 #: src/routes/tracks.$trackID.tsx:168
 msgid "Track Nº"
 msgstr "Nº de piste"
@@ -709,10 +759,6 @@ msgstr "Sur"
 #: src/routes/tracks.$trackID.tsx:200
 msgid "Disk Nº"
 msgstr "Nº de disque"
-
-#: src/routes/tracks.$trackID.tsx:231
-msgid "Compilation"
-msgstr "Compilation"
 
 #: src/routes/tracks.$trackID.tsx:232
 msgid "Group this track with other tracks from the same compilation, regardless of the artist names."

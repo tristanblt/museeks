@@ -1,4 +1,5 @@
 import type {
+  Album,
   Playlist,
   ScanResult,
   Track,
@@ -105,6 +106,14 @@ class DatabaseBridge implements DatabaseBridgeInterface {
   }
 
   async getCompilationAlbums(): Promise<Array<TrackGroup>> {
+    return [];
+  }
+
+  async getAlbums(): Promise<Array<Album>> {
+    return [];
+  }
+
+  async getAlbumTracks(): Promise<Array<Track>> {
     return [];
   }
 

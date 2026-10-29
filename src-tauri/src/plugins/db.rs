@@ -18,7 +18,7 @@ use crate::libs::database::{DB, SUPPORTED_PLAYLISTS_EXTENSIONS, SUPPORTED_TRACKS
 use crate::libs::error::{AnyResult, MuseeksError, handle_fatal_error};
 use crate::libs::events::IPCEvent;
 use crate::libs::playlist::Playlist;
-use crate::libs::track::{Track, TrackGroup, get_track_from_file, get_track_id_for_path};
+use crate::libs::track::{Album, Track, TrackGroup, get_track_from_file, get_track_id_for_path};
 use crate::libs::utils::{TimeLogger, scan_dirs};
 
 use super::config::get_storage_dir;
@@ -324,6 +324,24 @@ async fn get_compilation_albums(db_state: State<'_, DBState>) -> AnyResult<Vec<T
 }
 
 #[tauri::command]
+async fn get_albums(db_state: State<'_, DBState>) -> AnyResult<Vec<Album>> {
+    db_state.get_lock().await.get_albums().await
+}
+
+#[tauri::command]
+async fn get_album_tracks(
+    db_state: State<'_, DBState>,
+    album_artist: String,
+    album: String,
+) -> AnyResult<Vec<Track>> {
+    db_state
+        .get_lock()
+        .await
+        .get_album_tracks(album_artist, album)
+        .await
+}
+
+#[tauri::command]
 async fn has_compilations(db_state: State<'_, DBState>) -> AnyResult<bool> {
     db_state.get_lock().await.has_compilations().await
 }
@@ -461,6 +479,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             get_artist_tracks,
             get_compilation_albums,
             has_compilations,
+            get_albums,
+            get_album_tracks,
             get_all_playlists,
             get_playlist,
             get_playlist,

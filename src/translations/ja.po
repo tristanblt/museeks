@@ -45,11 +45,28 @@ msgstr "Museeks {0} が利用可能です。https://museeks.io をご確認く�
 msgid "Museeks {currentVersion} is the latest version available."
 msgstr "Museeks {currentVersion} が利用可能な最新バージョンです。"
 
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:31
+msgid "Cover of {0}"
+msgstr ""
+
+#: src/components/AlbumCard.tsx:37
+#: src/components/PlayerControls.tsx:24
+#: src/routes/albums.$albumArtist.$album.tsx:128
+msgid "Play"
+msgstr "再生"
+
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:38
+msgid "Play {0}"
+msgstr ""
+
 #: src/components/ButtonRepeat.tsx:18
 msgid "Repeat"
 msgstr "リピート"
 
 #: src/components/ButtonShuffle.tsx:12
+#: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "Shuffle"
 msgstr "シャッフル"
 
@@ -119,41 +136,43 @@ msgid "Library"
 msgstr "ライブラリ"
 
 #: src/components/Navigation.tsx:54
+#: src/routes/albums.$albumArtist.$album.tsx:78
+#: src/routes/albums.index.tsx:101
+msgid "Albums"
+msgstr ""
+
+#: src/components/Navigation.tsx:57
 #: src/routes/artists.tsx:64
 #: src/routes/settings.ui.tsx:148
 msgid "Artists"
 msgstr "アーティスト"
 
-#: src/components/Navigation.tsx:57
+#: src/components/Navigation.tsx:60
 #: src/routes/playlists.tsx:165
 #: src/routes/settings.ui.tsx:151
 msgid "Playlists"
 msgstr "プレイリスト"
 
-#: src/components/Navigation.tsx:60
+#: src/components/Navigation.tsx:63
 #: src/routes/downloads.tsx:70
 msgid "Downloads"
 msgstr ""
 
-#: src/components/Navigation.tsx:63
+#: src/components/Navigation.tsx:66
 msgid "Settings"
 msgstr "設定"
 
-#: src/components/Navigation.tsx:69
+#: src/components/Navigation.tsx:72
 msgid "Library status"
 msgstr ""
 
-#: src/components/Navigation.tsx:93
+#: src/components/Navigation.tsx:96
 msgid "scanning tracks..."
 msgstr "トラックをスキャン中..."
 
 #: src/components/PlayerControls.tsx:18
 msgid "Previous"
 msgstr "前へ"
-
-#: src/components/PlayerControls.tsx:24
-msgid "Play"
-msgstr "再生"
 
 #: src/components/PlayerControls.tsx:24
 msgid "Pause"
@@ -277,6 +296,7 @@ msgstr ""
 #. placeholder {0}: tracks.length
 #: src/components/TrackListGrouped.tsx:115
 #: src/components/TrackListStatus.tsx:11
+#: src/routes/albums.$albumArtist.$album.tsx:108
 msgid "{0, plural, one {# track} other {# tracks}}"
 msgstr "{0, plural, one {# 曲} other {# 曲}}"
 
@@ -285,6 +305,7 @@ msgid "Track list sorting options"
 msgstr ""
 
 #: src/components/TrackListHeader.tsx:26
+#: src/routes/albums.index.tsx:81
 #: src/routes/tracks.$trackID.tsx:88
 msgid "Title"
 msgstr "タイトル"
@@ -295,10 +316,12 @@ msgid "Duration"
 msgstr "再生時間"
 
 #: src/components/TrackListHeader.tsx:36
+#: src/routes/albums.index.tsx:80
 msgid "Artist"
 msgstr "アーティスト"
 
 #: src/components/TrackListHeader.tsx:41
+#: src/routes/albums.$albumArtist.$album.tsx:88
 #: src/routes/tracks.$trackID.tsx:99
 msgid "Album"
 msgstr "アルバム"
@@ -340,6 +363,37 @@ msgstr "音量"
 
 #: src/routes/__root.tsx:84
 msgid "Application main content"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:83
+msgid "Cover of {album}"
+msgstr ""
+
+#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/tracks.$trackID.tsx:231
+msgid "Compilation"
+msgstr ""
+
+#: src/routes/albums.index.tsx:82
+#: src/routes/tracks.$trackID.tsx:154
+msgid "Year"
+msgstr "年"
+
+#: src/routes/albums.index.tsx:89
+msgid "There are no albums in your library yet."
+msgstr ""
+
+#. placeholder {0}: visibleAlbums.length
+#: src/routes/albums.index.tsx:104
+msgid "{0, plural, one {# album} other {# albums}}"
+msgstr ""
+
+#: src/routes/albums.index.tsx:111
+msgid "Sort albums by"
+msgstr ""
+
+#: src/routes/albums.index.tsx:133
+msgid "No album matches your search."
 msgstr ""
 
 #: src/routes/artists.tsx:70
@@ -693,10 +747,6 @@ msgstr "カンマで区切って複数のアーティストを追加できます
 msgid "You can add multiple genres with commas"
 msgstr "カンマで区切って複数のジャンルを追加できます"
 
-#: src/routes/tracks.$trackID.tsx:154
-msgid "Year"
-msgstr "年"
-
 #: src/routes/tracks.$trackID.tsx:168
 msgid "Track Nº"
 msgstr "トラック番号"
@@ -709,10 +759,6 @@ msgstr "/"
 #: src/routes/tracks.$trackID.tsx:200
 msgid "Disk Nº"
 msgstr "ディスク番号"
-
-#: src/routes/tracks.$trackID.tsx:231
-msgid "Compilation"
-msgstr ""
 
 #: src/routes/tracks.$trackID.tsx:232
 msgid "Group this track with other tracks from the same compilation, regardless of the artist names."

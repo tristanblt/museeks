@@ -32,6 +32,8 @@ fn main() {
                     "get_artist_tracks",
                     "get_compilation_albums",
                     "has_compilations",
+                    "get_albums",
+                    "get_album_tracks",
                     "get_all_playlists",
                     "get_playlist",
                     "create_playlist",

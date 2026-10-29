@@ -2,6 +2,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { info } from '@tauri-apps/plugin-log';
 
 import type {
+  Album,
   Playlist,
   ScanResult,
   Track,
@@ -21,6 +22,8 @@ export interface DatabaseBridgeInterface {
   getArtistTracks(artist: string): Promise<Array<TrackGroup>>;
   hasCompilations(): Promise<boolean>;
   getCompilationAlbums(): Promise<Array<TrackGroup>>;
+  getAlbums(): Promise<Array<Album>>;
+  getAlbumTracks(albumArtist: string, album: string): Promise<Array<Track>>;
   getAllPlaylists(): Promise<Array<Playlist>>;
   getPlaylist(id: string): Promise<Playlist>;
   createPlaylist(name: string, ids: Array<string>): Promise<Playlist>;
@@ -95,6 +98,19 @@ class DatabaseBridge implements DatabaseBridgeInterface {
   @LogExecutionTime
   async getCompilationAlbums(): Promise<Array<TrackGroup>> {
     return invoke('plugin:database|get_compilation_albums');
+  }
+
+  @LogExecutionTime
+  async getAlbums(): Promise<Array<Album>> {
+    return invoke('plugin:database|get_albums');
+  }
+
+  @LogExecutionTime
+  async getAlbumTracks(
+    albumArtist: string,
+    album: string,
+  ): Promise<Array<Track>> {
+    return invoke('plugin:database|get_album_tracks', { albumArtist, album });
   }
 
   // ---------------------------------------------------------------------------

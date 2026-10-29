@@ -45,11 +45,28 @@ msgstr "Museeks {0} is available, check https://museeks.io!"
 msgid "Museeks {currentVersion} is the latest version available."
 msgstr "Museeks {currentVersion} is the latest version available."
 
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:31
+msgid "Cover of {0}"
+msgstr "Cover of {0}"
+
+#: src/components/AlbumCard.tsx:37
+#: src/components/PlayerControls.tsx:24
+#: src/routes/albums.$albumArtist.$album.tsx:128
+msgid "Play"
+msgstr "Play"
+
+#. placeholder {0}: album.name
+#: src/components/AlbumCard.tsx:38
+msgid "Play {0}"
+msgstr "Play {0}"
+
 #: src/components/ButtonRepeat.tsx:18
 msgid "Repeat"
 msgstr "Repeat"
 
 #: src/components/ButtonShuffle.tsx:12
+#: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "Shuffle"
 msgstr "Shuffle"
 
@@ -119,41 +136,43 @@ msgid "Library"
 msgstr "Library"
 
 #: src/components/Navigation.tsx:54
+#: src/routes/albums.$albumArtist.$album.tsx:78
+#: src/routes/albums.index.tsx:101
+msgid "Albums"
+msgstr "Albums"
+
+#: src/components/Navigation.tsx:57
 #: src/routes/artists.tsx:64
 #: src/routes/settings.ui.tsx:148
 msgid "Artists"
 msgstr "Artists"
 
-#: src/components/Navigation.tsx:57
+#: src/components/Navigation.tsx:60
 #: src/routes/playlists.tsx:165
 #: src/routes/settings.ui.tsx:151
 msgid "Playlists"
 msgstr "Playlists"
 
-#: src/components/Navigation.tsx:60
+#: src/components/Navigation.tsx:63
 #: src/routes/downloads.tsx:70
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/components/Navigation.tsx:63
+#: src/components/Navigation.tsx:66
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/Navigation.tsx:69
+#: src/components/Navigation.tsx:72
 msgid "Library status"
 msgstr "Library status"
 
-#: src/components/Navigation.tsx:93
+#: src/components/Navigation.tsx:96
 msgid "scanning tracks..."
 msgstr "scanning tracks..."
 
 #: src/components/PlayerControls.tsx:18
 msgid "Previous"
 msgstr "Previous"
-
-#: src/components/PlayerControls.tsx:24
-msgid "Play"
-msgstr "Play"
 
 #: src/components/PlayerControls.tsx:24
 msgid "Pause"
@@ -277,6 +296,7 @@ msgstr "Track list"
 #. placeholder {0}: tracks.length
 #: src/components/TrackListGrouped.tsx:115
 #: src/components/TrackListStatus.tsx:11
+#: src/routes/albums.$albumArtist.$album.tsx:108
 msgid "{0, plural, one {# track} other {# tracks}}"
 msgstr "{0, plural, one {# track} other {# tracks}}"
 
@@ -285,6 +305,7 @@ msgid "Track list sorting options"
 msgstr "Track list sorting options"
 
 #: src/components/TrackListHeader.tsx:26
+#: src/routes/albums.index.tsx:81
 #: src/routes/tracks.$trackID.tsx:88
 msgid "Title"
 msgstr "Title"
@@ -295,10 +316,12 @@ msgid "Duration"
 msgstr "Duration"
 
 #: src/components/TrackListHeader.tsx:36
+#: src/routes/albums.index.tsx:80
 msgid "Artist"
 msgstr "Artist"
 
 #: src/components/TrackListHeader.tsx:41
+#: src/routes/albums.$albumArtist.$album.tsx:88
 #: src/routes/tracks.$trackID.tsx:99
 msgid "Album"
 msgstr "Album"
@@ -341,6 +364,37 @@ msgstr "Volume"
 #: src/routes/__root.tsx:84
 msgid "Application main content"
 msgstr "Application main content"
+
+#: src/routes/albums.$albumArtist.$album.tsx:83
+msgid "Cover of {album}"
+msgstr "Cover of {album}"
+
+#: src/routes/albums.$albumArtist.$album.tsx:88
+#: src/routes/tracks.$trackID.tsx:231
+msgid "Compilation"
+msgstr "Compilation"
+
+#: src/routes/albums.index.tsx:82
+#: src/routes/tracks.$trackID.tsx:154
+msgid "Year"
+msgstr "Year"
+
+#: src/routes/albums.index.tsx:89
+msgid "There are no albums in your library yet."
+msgstr "There are no albums in your library yet."
+
+#. placeholder {0}: visibleAlbums.length
+#: src/routes/albums.index.tsx:104
+msgid "{0, plural, one {# album} other {# albums}}"
+msgstr "{0, plural, one {# album} other {# albums}}"
+
+#: src/routes/albums.index.tsx:111
+msgid "Sort albums by"
+msgstr "Sort albums by"
+
+#: src/routes/albums.index.tsx:133
+msgid "No album matches your search."
+msgstr "No album matches your search."
 
 #: src/routes/artists.tsx:70
 msgid "Compilations"
@@ -693,10 +747,6 @@ msgstr "You can add multiple artists with commas"
 msgid "You can add multiple genres with commas"
 msgstr "You can add multiple genres with commas"
 
-#: src/routes/tracks.$trackID.tsx:154
-msgid "Year"
-msgstr "Year"
-
 #: src/routes/tracks.$trackID.tsx:168
 msgid "Track Nº"
 msgstr "Track Nº"
@@ -709,10 +759,6 @@ msgstr "Of"
 #: src/routes/tracks.$trackID.tsx:200
 msgid "Disk Nº"
 msgstr "Disk Nº"
-
-#: src/routes/tracks.$trackID.tsx:231
-msgid "Compilation"
-msgstr "Compilation"
 
 #: src/routes/tracks.$trackID.tsx:232
 msgid "Group this track with other tracks from the same compilation, regardless of the artist names."

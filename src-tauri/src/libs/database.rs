@@ -6,7 +6,7 @@ use std::path::PathBuf;
 
 use super::error::AnyResult;
 use super::playlist::Playlist;
-use super::track::{Track, TrackGroup};
+use super::track::{Album, Track, TrackGroup};
 
 // Single source of truth for supported audio formats (extension, MIME type).
 // KEEP IN SYNC with Tauri's file associations in tauri.conf.json
@@ -299,6 +299,50 @@ impl DB {
                 .await?;
 
         Ok(result)
+    }
+
+    /**
+     * Get all albums, grouped by album artist + album name
+     */
+    pub async fn get_albums(&mut self) -> AnyResult<Vec<Album>> {
+        let albums = sqlx::query_as::<_, Album>(
+            "SELECT
+               album AS name,
+               album_artist,
+               MIN(year) AS year,
+               COUNT(*) AS track_count,
+               SUM(duration) AS duration,
+               MAX(is_compilation) AS is_compilation,
+               (SELECT t.path FROM tracks t
+                WHERE t.album = tracks.album AND t.album_artist = tracks.album_artist
+                ORDER BY t.disk_no, t.track_no LIMIT 1) AS cover_path
+             FROM tracks
+             GROUP BY album_artist, album
+             ORDER BY album_artist COLLATE NOCASE, year, album COLLATE NOCASE;",
+        )
+        .fetch_all(&mut self.connection)
+        .await?;
+
+        Ok(albums)
+    }
+
+    /**
+     * Get the tracks of an album, in disc/track order
+     */
+    pub async fn get_album_tracks(
+        &mut self,
+        album_artist: String,
+        album: String,
+    ) -> AnyResult<Vec<Track>> {
+        let tracks = sqlx::query_as::<_, Track>(
+            "SELECT * FROM tracks WHERE album_artist = ? AND album = ? ORDER BY disk_no, track_no, title",
+        )
+        .bind(&album_artist)
+        .bind(&album)
+        .fetch_all(&mut self.connection)
+        .await?;
+
+        Ok(tracks)
     }
 
     /**

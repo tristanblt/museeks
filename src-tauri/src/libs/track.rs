@@ -41,6 +41,22 @@ pub struct Track {
 }
 
 /**
+ * Album summary, used to display the albums grid
+ */
+#[derive(Debug, Clone, Serialize, Deserialize, FromRow, TS)]
+#[ts(export, export_to = "../../src/generated/typings.ts")]
+pub struct Album {
+    pub name: String,
+    pub album_artist: String,
+    pub year: Option<u16>,
+    pub track_count: u32,
+    pub duration: u32,
+    pub is_compilation: bool,
+    /** Path of the first track, used to retrieve the album cover */
+    pub cover_path: String,
+}
+
+/**
  * Represents a group of tracks, grouped by "something", lib artist name, or
  * album name
  */
