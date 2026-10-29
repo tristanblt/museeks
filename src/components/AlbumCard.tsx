@@ -45,7 +45,7 @@ function AlbumCard({ album, isPlaying }: Props) {
           }}
           {...stylex.props(styles.playButton)}
         >
-          <Icon name="play" size={16} />
+          <Icon name="play" size={16} xstyle={styles.playIcon} />
         </button>
       </div>
       <div
@@ -112,7 +112,7 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: '3px', // optical centering of the play triangle
+    padding: 0,
     color: 'white',
     backgroundColor: 'var(--main-color)',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.35)',
@@ -130,6 +130,11 @@ const styles = stylex.create({
     transitionProperty: 'opacity, transform',
     transitionDuration: '0.18s',
     transitionTimingFunction: 'ease-out',
+  },
+  playIcon: {
+    display: 'block',
+    // The triangle's visual center is left of its bounding box center
+    transform: 'translateX(1.5px)',
   },
   title: {
     fontSize: '13px',
