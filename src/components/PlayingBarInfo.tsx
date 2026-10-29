@@ -51,18 +51,13 @@ export default function PlayingBarInfo(props: Props) {
             <Link
               inheritColor
               type="normal"
-              linkOptions={
-                trackPlaying.is_compilation
-                  ? {
-                      to: '/artists/presets/compilations',
-                      search: { focused_album: trackPlaying.album },
-                    }
-                  : {
-                      to: '/artists/$artistID',
-                      params: { artistID: trackPlaying.album_artist },
-                      search: { focused_album: trackPlaying.album },
-                    }
-              }
+              linkOptions={{
+                to: '/albums/$albumArtist/$album',
+                params: {
+                  albumArtist: trackPlaying.album_artist,
+                  album: trackPlaying.album,
+                },
+              }}
             >
               {trackPlaying.album}
             </Link>
@@ -109,8 +104,9 @@ const styles = stylex.create({
     textAlign: 'center',
   },
   metadataTitle: {
-    fontWeight: 'var(--bold)',
-    marginBottom: '2px',
+    fontWeight: 600,
+    marginBottom: '1px',
+    color: 'var(--text)',
   },
   metadata: {
     overflow: 'hidden',
@@ -121,13 +117,13 @@ const styles = stylex.create({
     flexGrow: 0,
     flexShrink: 0,
     flexBasis: 'auto',
-    fontSize: '0.875rem',
     paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: '2px',
     paddingRight: '2px',
     fontVariantNumeric: 'tabular-nums',
     whiteSpace: 'nowrap',
-    opacity: 0.7,
+    fontSize: '10px',
+    color: 'var(--text-muted)',
   },
 });
