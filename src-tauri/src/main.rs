@@ -9,6 +9,7 @@ use libs::utils::get_theme_from_name;
 use log::{LevelFilter, info};
 use plugins::config::{ConfigManager, get_storage_dir};
 use std::env;
+use tauri::utils::config::BackgroundThrottlingPolicy;
 use tauri::{Manager, WebviewUrl, WebviewWindowBuilder};
 use tauri_plugin_log::fern::colors::ColoredLevelConfig;
 use tauri_plugin_log::{Target, TargetKind};
@@ -122,7 +123,11 @@ fn main() {
                     .min_inner_size(900.0, 550.0)
                     .fullscreen(false)
                     .resizable(true)
-                    .zoom_hotkeys_enabled(true);
+                    .zoom_hotkeys_enabled(true)
+                    // Keep the UI running when the window is hidden or in the background,
+                    // otherwise WebKit suspends it and media keys only take effect once
+                    // the window is shown again
+                    .background_throttling(BackgroundThrottlingPolicy::Disabled);
 
             // TODO: Windows drag-n-drop on windows does not work :|
             // https://github.com/tauri-apps/wry/issues/904
