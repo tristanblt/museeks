@@ -27,16 +27,28 @@ export default function Button(props: Props) {
 
 const styles = stylex.create({
   button: {
-    borderRadius: 'var(--border-radius)',
+    borderRadius: 'var(--radius-md)',
     borderStyle: 'solid',
     borderWidth: '1px',
     borderColor: 'var(--button-border)',
     cursor: 'pointer',
     boxSizing: 'border-box',
+    fontWeight: 500,
     opacity: {
-      ':active': 0.7,
+      default: 1,
       ':disabled': 0.5,
     },
+    filter: {
+      default: 'none',
+      ':hover:not(:disabled)': 'brightness(1.12)',
+    },
+    transform: {
+      default: 'none',
+      ':active:not(:disabled)': 'scale(0.97)',
+    },
+    transitionProperty: 'filter, transform, background-color',
+    transitionDuration: 'var(--duration-fast)',
+    transitionTimingFunction: 'var(--ease-out)',
   },
   block: {
     display: 'block',
@@ -51,18 +63,19 @@ const relevancyVariants = stylex.create({
   },
   danger: {
     color: 'white',
-    backgroundColor: '#b63333',
+    backgroundColor: 'var(--danger-color)',
   },
 });
 
 const sizeVariants = stylex.create({
   default: {
     paddingBlock: '6px',
-    paddingInline: '8px',
+    paddingInline: '12px',
   },
   small: {
-    paddingBlock: '1px',
-    paddingInline: '5px',
-    fontSize: '10px',
+    paddingBlock: '2px',
+    paddingInline: '8px',
+    fontSize: '11px',
+    borderRadius: 'var(--radius-pill)',
   },
 });

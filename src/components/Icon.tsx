@@ -15,6 +15,7 @@ import playlist from '../assets/icons/playlist.svg?react';
 import plus from '../assets/icons/plus.svg?react';
 import repeatOne from '../assets/icons/repeat-one.svg?react';
 import repeat from '../assets/icons/repeat.svg?react';
+import search from '../assets/icons/search.svg?react';
 import settings from '../assets/icons/settings.svg?react';
 import shuffle from '../assets/icons/shuffle.svg?react';
 import skipBack from '../assets/icons/skip-back.svg?react';
@@ -43,6 +44,7 @@ const icons: Record<
   plus,
   repeat,
   repeatOne,
+  search,
   settings,
   shuffle,
   skipBack,

@@ -365,11 +365,13 @@ const styles = stylex.create({
       ':hover': 'brightness(1.08)',
     },
   },
+  // Readable on both light and dark backgrounds
   actionHighlight: {
-    color: 'var(--warning-color)',
+    color: 'color-mix(in srgb, var(--warning-color) 70%, var(--text))',
   },
   missing: {
-    color: 'var(--warning-color)',
+    color: 'color-mix(in srgb, var(--warning-color) 70%, var(--text))',
+    fontWeight: 600,
   },
   actionSecondary: {
     color: 'var(--text)',

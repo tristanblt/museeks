@@ -40,10 +40,16 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     borderStyle: 'none',
     borderWidth: '0',
-    color: 'var(--text)',
+    color: {
+      default: 'var(--text)',
+      ':hover': 'var(--main-color)',
+    },
     textAlign: 'center',
     padding: '0',
     lineHeight: 1,
+    cursor: 'pointer',
+    transitionProperty: 'color, transform',
+    transitionDuration: 'var(--duration-fast)',
   },
   icon: {
     verticalAlign: 'middle',

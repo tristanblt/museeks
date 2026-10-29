@@ -7,6 +7,7 @@ import Keybinding from 'react-keybinding-component';
 import LibraryAPI from '../api/LibraryAPI';
 import useLibraryStore from '../lib/store';
 import { isCtrlKey } from '../lib/utils-events';
+import Icon from './Icon';
 
 export default function Search() {
   const search = useLibraryStore((state) => state.search);
@@ -37,6 +38,7 @@ export default function Search() {
 
   return (
     <div {...stylex.props(styles.container)}>
+      <Icon name="search" size={12} xstyle={styles.searchIcon} />
       <input
         type="text"
         placeholder={t`search...`}
@@ -71,30 +73,50 @@ export default function Search() {
 const styles = stylex.create({
   container: {
     position: 'relative',
-    maxWidth: '180px',
+    width: '200px',
     display: 'flex',
     alignItems: 'center',
+  },
+  searchIcon: {
+    position: 'absolute',
+    left: '10px',
+    color: 'var(--text-muted)',
+    pointerEvents: 'none',
   },
   input: {
     display: 'block',
     fontSize: 'inherit',
     width: '100%',
-    paddingBlock: '6px',
-    paddingInline: '12px',
-    backgroundColor: 'var(--search-bg)',
+    paddingBlock: '7px',
+    paddingLeft: '30px',
+    paddingRight: '26px',
+    backgroundColor: {
+      default: 'var(--search-bg)',
+      ':focus': 'var(--background)',
+    },
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'var(--border-color)',
+    borderColor: {
+      default: 'transparent',
+      ':focus': 'var(--main-color)',
+    },
+    boxShadow: {
+      default: 'none',
+      ':focus': '0 0 0 3px var(--main-color-soft)',
+    },
+    outline: 'none',
     color: 'var(--text)',
-    borderRadius: 'var(--border-radius)',
+    borderRadius: 'var(--radius-pill)',
     lineHeight: '16px',
+    transitionProperty: 'background-color, border-color, box-shadow',
+    transitionDuration: 'var(--duration-fast)',
   },
   inputNotEmpty: {
-    borderBottomColor: 'var(--main-color)',
+    borderColor: 'var(--main-color)',
   },
   clear: {
     position: 'absolute',
-    right: '4px',
+    right: '6px',
     zIndex: 10, // to be above the input, even when focused
     fontSize: '15px',
     color: 'var(--text)',

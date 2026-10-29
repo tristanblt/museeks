@@ -59,6 +59,8 @@ const styles = stylex.create({
     backgroundColor: 'var(--tracks-header-bg)',
     display: 'flex',
     width: '100%',
+    paddingInline: '6px',
+    marginBottom: '4px',
     position: 'sticky',
     top: 0,
     zIndex: 5,

@@ -59,8 +59,16 @@ export default function View(props: Props) {
   );
 }
 
+const enter = stylex.keyframes({
+  from: { opacity: 0, transform: 'translateY(4px)' },
+  to: { opacity: 1, transform: 'none' },
+});
+
 const styles = stylex.create({
   view: {
+    animationName: enter,
+    animationDuration: '220ms',
+    animationTimingFunction: 'var(--ease-out)',
     height: '100%',
     maxHeight: '100%',
     backgroundColor: 'var(--background)',

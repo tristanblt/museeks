@@ -48,7 +48,7 @@ export default function SideNav(props: Props) {
             <>
               {/** should probably be a prop */}
               <div {...stylex.props(styles.letter)}>///</div>
-              {props.bottomContent}
+              <div {...stylex.props(styles.items)}>{props.bottomContent}</div>
             </>
           )}
         </NavigationMenu.List>
@@ -80,13 +80,16 @@ const styles = stylex.create({
   },
   actions: {
     alignItems: 'stretch',
-    marginRight: '8px',
+    marginRight: '12px',
   },
   title: {
-    marginBlock: '10px',
-    marginInline: '12px',
-    fontSize: '0.875rem',
-    fontWeight: 'bold',
+    marginBlock: '12px',
+    marginInline: '18px',
+    fontSize: '11px',
+    lineHeight: '16px',
+    fontWeight: 700,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
     color: 'var(--text-muted)',
     flexGrow: 1,
     flexShrink: 1,
@@ -104,17 +107,25 @@ const styles = stylex.create({
   },
   letter: {
     display: 'block',
-    paddingBlock: '8px',
-    paddingInline: '12px',
+    paddingTop: '8px',
+    paddingBottom: '4px',
+    paddingInline: '18px',
+    fontSize: '10px',
+    fontWeight: 700,
+    letterSpacing: '0.06em',
     textTransform: 'uppercase',
-    fontWeight: 'bolder',
     position: 'sticky',
-    top: '32px',
+    top: '40px',
+    zIndex: 1,
     backgroundColor: 'var(--sidebar-bg)',
     color: 'var(--text-muted)',
+    opacity: 0.8,
   },
   items: {
-    display: 'block',
-    marginBottom: '12px',
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '1px',
+    paddingInline: '8px',
+    marginBottom: '8px',
   },
 });

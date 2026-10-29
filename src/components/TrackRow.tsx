@@ -142,25 +142,39 @@ const trackStyles = stylex.create({
   track: {
     position: 'relative',
     display: 'flex',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: 'transparent',
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: 'transparent',
-    backgroundColor: 'var(--tracks-bg-even)',
+    borderRadius: 'var(--radius-md)',
+    backgroundColor: {
+      default: 'var(--tracks-bg-even)',
+      ':hover': 'var(--text-interactive-bg)',
+    },
+    color: {
+      default: 'inherit',
+      ':is([data-is-playing="true"])': 'var(--main-color)',
+    },
     alignItems: 'center',
     maxWidth: '100%',
   },
   trackEvenRow: {
-    backgroundColor: 'var(--tracks-bg-odd)',
+    backgroundColor: {
+      default: 'var(--tracks-bg-odd)',
+      ':hover': 'var(--text-interactive-bg)',
+    },
   },
   trackSelected: {
-    backgroundColor: 'var(--active-item-bg)',
-    color: 'var(--active-item-color)',
+    backgroundColor: {
+      default: 'var(--active-item-bg)',
+      ':hover': 'var(--active-item-bg)',
+    },
+    color: {
+      default: 'var(--active-item-color)',
+      ':is([data-is-playing="true"])': 'var(--active-item-color)',
+    },
   },
+  // Consecutive selected rows look like a single block
   selectedWithSelectedAbove: {
-    borderTopColor: 'rgba(255 255 255 / 0.2)',
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    boxShadow: '0 -4px 0 0 var(--active-item-bg)',
   },
   isDragging: {
     opacity: 0.5,
@@ -194,8 +208,8 @@ const cellStyles = stylex.create({
     borderLeftWidth: '1px',
     borderLeftStyle: 'solid',
     borderLeftColor: 'transparent',
-    paddingRight: '4px',
-    paddingLeft: '4px',
+    paddingRight: '6px',
+    paddingLeft: '6px',
     cursor: 'default',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -224,6 +238,7 @@ const cellStyles = stylex.create({
   },
   artistInTitle: {
     color: 'var(--text-muted)',
+    opacity: 0.9,
     fontSize: '0.85em',
     flexShrink: 1,
     minWidth: 0,

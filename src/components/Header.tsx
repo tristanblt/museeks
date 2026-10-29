@@ -79,6 +79,11 @@ export default function Header() {
   );
 }
 
+const popIn = stylex.keyframes({
+  from: { opacity: 0, transform: 'scale(0.96) translateY(-4px)' },
+  to: { opacity: 1, transform: 'none' },
+});
+
 const styles = stylex.create({
   header: {
     boxSizing: 'border-box',
@@ -89,12 +94,12 @@ const styles = stylex.create({
     color: 'var(--header-color)',
     paddingTop: 0,
     paddingBottom: 0,
-    paddingLeft: '10px',
-    paddingRight: '10px',
+    paddingLeft: '12px',
+    paddingRight: '14px',
     display: 'flex',
     alignItems: 'stretch',
     justifyContent: 'space-between',
-    height: '50px',
+    height: '58px',
     flexGrow: 0,
     flexShrink: 0,
     flexBasis: 'auto',
@@ -142,6 +147,10 @@ const styles = stylex.create({
   },
   queueContainer: {
     zIndex: 1000,
+    transformOrigin: 'var(--transform-origin)',
+    animationName: popIn,
+    animationDuration: '160ms',
+    animationTimingFunction: 'var(--ease-out)',
     display: {
       ':is([data-open])': 'block',
     },

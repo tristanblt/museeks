@@ -52,6 +52,7 @@ msgstr "Pochette de {0}"
 
 #: src/components/AlbumCard.tsx:37
 #: src/components/PlayerControls.tsx:24
+#: src/components/TrackListGrouped.tsx:120
 #: src/routes/albums.$albumArtist.$album.tsx:171
 msgid "Play"
 msgstr "Lecture"
@@ -252,7 +253,7 @@ msgstr "Précédent"
 msgid "Pause"
 msgstr "Pause"
 
-#: src/components/PlayerControls.tsx:30
+#: src/components/PlayerControls.tsx:31
 msgid "Next"
 msgstr "Suivant"
 
@@ -268,15 +269,15 @@ msgstr "vider la file d'attente"
 msgid "see more"
 msgstr "voir plus"
 
-#: src/components/Search.tsx:42
+#: src/components/Search.tsx:44
 msgid "search..."
 msgstr "rechercher..."
 
-#: src/components/Search.tsx:49
+#: src/components/Search.tsx:51
 msgid "Search library"
 msgstr "Rechercher dans la bibliothèque"
 
-#: src/components/Search.tsx:61
+#: src/components/Search.tsx:63
 msgid "Clear search"
 msgstr "Effacer la recherche"
 
@@ -354,13 +355,25 @@ msgid "Remove"
 msgstr "Retirer"
 
 #: src/components/TrackListDefault.tsx:124
-#: src/components/TrackListGrouped.tsx:58
+#: src/components/TrackListGrouped.tsx:61
 msgid "Track list"
 msgstr "Liste des pistes"
 
+#: src/components/TrackListGrouped.tsx:114
+msgid "Open the album"
+msgstr "Ouvrir l'album"
+
+#: src/components/TrackListGrouped.tsx:117
+msgid "Cover of {label}"
+msgstr "Pochette de {label}"
+
+#: src/components/TrackListGrouped.tsx:121
+msgid "Play {label}"
+msgstr "Lire {label}"
+
 #. placeholder {0}: props.count
 #. placeholder {0}: tracks.length
-#: src/components/TrackListGrouped.tsx:115
+#: src/components/TrackListGrouped.tsx:145
 #: src/components/TrackListStatus.tsx:11
 #: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "{0, plural, one {# track} other {# tracks}}"

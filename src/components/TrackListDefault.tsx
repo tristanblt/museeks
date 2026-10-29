@@ -151,8 +151,8 @@ export default function TrackListDefault(props: Props) {
                   }
                   style={{
                     position: 'absolute',
-                    left: 0,
-                    width: '100%',
+                    left: '6px',
+                    width: 'calc(100% - 12px)',
                     height: `${virtualItem.size}px`,
                     // Intentionally not translateY, as it would create another paint
                     // layer where every row would cover elements from the previous one.

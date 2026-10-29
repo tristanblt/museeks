@@ -112,26 +112,26 @@ export default function QueueList(props: Props) {
 
 const styles = stylex.create({
   queueHeader: {
-    paddingTop: '5px',
-    paddingBottom: '5px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBlock: '10px',
+    paddingInline: '12px',
     backgroundColor: 'var(--queue-header-bg)',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: 'var(--border-color)',
   },
   queueHeaderInfos: {
-    float: 'right',
     fontSize: '11px',
-    paddingTop: '1px',
-    paddingBottom: '1px',
+    color: 'var(--text-muted)',
   },
   queueContent: {
-    maxHeight: '300px',
+    maxHeight: '340px',
     overflow: 'auto',
     listStyle: 'none',
-    padding: 0,
+    padding: '6px',
     margin: 0,
   },
 });

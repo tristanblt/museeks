@@ -5,56 +5,56 @@
   "variables": {
     "--color-scheme": "dark",
     "--text": "hsl(0, 0%, 94%)",
-    "--text-muted": "hsl(0, 0%, 75%)",
-    "--text-interactive-bg": "hsla(0, 0%, 100%, 0.08)",
-    "--background": "hsl(216, 0%, 9.5%)",
+    "--text-muted": "hsl(0, 0%, 64%)",
+    "--text-interactive-bg": "hsla(0, 0%, 100%, 0.07)",
+    "--background": "hsl(0, 0%, 9%)",
     "--faded-bg": "hsla(0, 0%, 0%, 0.8)",
 
-    "--border-color": "hsl(216, 0%, 20%)",
-    "--border-color-softer": "hsl(216, 0%, 24%)",
-    "--border-radius": "2px",
+    "--border-color": "hsla(0, 0%, 100%, 0.09)",
+    "--border-color-softer": "hsla(0, 0%, 100%, 0.06)",
+    "--border-radius": "6px",
 
     "--header-color": "hsl(0, 0%, 94%)",
-    "--header-bg": "hsl(216, 0%, 13%)",
-    "--header-bg-softer": "hsl(216, 0%, 16%)",
+    "--header-bg": "hsl(0, 0%, 11.5%)",
+    "--header-bg-softer": "hsla(0, 0%, 100%, 0.05)",
 
-    "--footer-bg": "hsl(216, 0%, 13%)",
-    "--footer-nav-bg-color-active": "hsl(216, 0%, 9.5%)",
+    "--footer-bg": "hsl(0, 0%, 11.5%)",
+    "--footer-nav-bg-color-active": "hsla(0, 0%, 100%, 0.08)",
 
-    "--active-item-bg": "hsl(216, 0%, 20%)",
+    "--active-item-bg": "hsla(0, 0%, 100%, 0.12)",
     "--active-item-color": "hsl(0, 0%, 94%)",
 
-    "--tracks-bg-even": "hsl(216, 0%, 9.5%)",
-    "--tracks-bg-odd": "hsl(216, 0%, 13%)",
+    "--tracks-bg-even": "transparent",
+    "--tracks-bg-odd": "transparent",
 
-    "--tracks-header-bg": "hsl(216, 0%, 9.5%)",
-    "--tracks-header-color": "hsl(0, 0%, 94%)",
+    "--tracks-header-bg": "hsl(0, 0%, 9%)",
+    "--tracks-header-color": "hsl(0, 0%, 64%)",
 
-    "--cover-bg": "hsl(216, 0%, 16%)",
+    "--cover-bg": "hsl(0, 0%, 15%)",
 
     "--success-color": "hsl(120, 39%, 56%)",
     "--info-color": "hsl(191, 64%, 59%)",
     "--warning-color": "hsl(38, 86%, 62%)",
     "--danger-color": "hsl(0, 66%, 56%)",
 
-    "--toasts-bg": "hsl(216, 0%, 9.5%)",
+    "--toasts-bg": "hsl(0, 0%, 14%)",
 
-    "--progress-bg": "hsl(216, 0%, 8%)",
+    "--progress-bg": "hsla(0, 0%, 100%, 0.12)",
 
-    "--sidebar-bg": "hsl(216, 0%, 13%)",
-    "--sidebar-item-active-bg": "hsl(216, 0%, 9.5%)",
+    "--sidebar-bg": "hsl(0, 0%, 10.5%)",
+    "--sidebar-item-active-bg": "hsla(0, 0%, 100%, 0.06)",
 
-    "--search-bg": "hsl(216, 0%, 9.5%)",
-    "--slider-bg": "hsl(216, 0%, 9.5%)",
+    "--search-bg": "hsla(0, 0%, 100%, 0.06)",
+    "--slider-bg": "hsla(0, 0%, 100%, 0.14)",
 
-    "--queue-bg": "hsl(216, 0%, 9.5%)",
-    "--queue-header-bg": "hsl(216, 0%, 13%)",
+    "--queue-bg": "hsl(0, 0%, 13%)",
+    "--queue-header-bg": "hsl(0, 0%, 13%)",
 
-    "--checkbox-bg": "hsl(216, 0%, 17%)",
-    "--input-bg": "hsl(216, 0%, 15%)",
+    "--checkbox-bg": "hsla(0, 0%, 100%, 0.08)",
+    "--input-bg": "hsla(0, 0%, 100%, 0.06)",
     "--input-color": "hsl(0, 0%, 94%)",
-    "--button-bg": "hsl(216, 0%, 16%)",
-    "--button-border": "hsla(0, 0%, 100%, .1)",
+    "--button-bg": "hsla(0, 0%, 100%, 0.08)",
+    "--button-border": "hsla(0, 0%, 100%, 0.06)",
     "--button-color": "hsl(0, 0%, 94%)"
   }
 }

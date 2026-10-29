@@ -52,6 +52,7 @@ msgstr ""
 
 #: src/components/AlbumCard.tsx:37
 #: src/components/PlayerControls.tsx:24
+#: src/components/TrackListGrouped.tsx:120
 #: src/routes/albums.$albumArtist.$album.tsx:171
 msgid "Play"
 msgstr "再生"
@@ -252,7 +253,7 @@ msgstr "前へ"
 msgid "Pause"
 msgstr "一時停止"
 
-#: src/components/PlayerControls.tsx:30
+#: src/components/PlayerControls.tsx:31
 msgid "Next"
 msgstr "次へ"
 
@@ -268,15 +269,15 @@ msgstr "キューをクリア"
 msgid "see more"
 msgstr "もっと見る"
 
-#: src/components/Search.tsx:42
+#: src/components/Search.tsx:44
 msgid "search..."
 msgstr "検索..."
 
-#: src/components/Search.tsx:49
+#: src/components/Search.tsx:51
 msgid "Search library"
 msgstr ""
 
-#: src/components/Search.tsx:61
+#: src/components/Search.tsx:63
 msgid "Clear search"
 msgstr ""
 
@@ -354,13 +355,25 @@ msgid "Remove"
 msgstr "削除"
 
 #: src/components/TrackListDefault.tsx:124
-#: src/components/TrackListGrouped.tsx:58
+#: src/components/TrackListGrouped.tsx:61
 msgid "Track list"
+msgstr ""
+
+#: src/components/TrackListGrouped.tsx:114
+msgid "Open the album"
+msgstr ""
+
+#: src/components/TrackListGrouped.tsx:117
+msgid "Cover of {label}"
+msgstr ""
+
+#: src/components/TrackListGrouped.tsx:121
+msgid "Play {label}"
 msgstr ""
 
 #. placeholder {0}: props.count
 #. placeholder {0}: tracks.length
-#: src/components/TrackListGrouped.tsx:115
+#: src/components/TrackListGrouped.tsx:145
 #: src/components/TrackListStatus.tsx:11
 #: src/routes/albums.$albumArtist.$album.tsx:142
 msgid "{0, plural, one {# track} other {# tracks}}"

@@ -91,32 +91,29 @@ export default function TrackListHeaderCell(props: Props) {
 
 const styles = stylex.create({
   trackCellHeader: {
-    fontWeight: 'var(--bold)',
+    fontWeight: 600,
+    fontSize: '10px',
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
     appearance: 'none',
     borderWidth: '0',
     backgroundColor: 'transparent',
     textAlign: 'left',
-    padding: 0,
+    paddingBlock: '4px',
+    paddingInline: 0,
     cursor: 'default',
     display: 'flex',
     alignItems: 'center',
     color: 'inherit',
-    borderLeftWidth: {
-      ':not(:first-child)': '1px',
-    },
-    borderLeftStyle: {
-      ':not(:first-child)': 'solid',
-    },
-    borderLeftColor: {
-      ':not(:first-child)': 'var(--border-color)',
-    },
   },
   sortable: {
-    backgroundColor: {
-      default: 'transparent',
-      ':focus': 'rgba(0 0 0 / 0.025)',
-      ':active': 'rgba(0 0 0 / 0.04)',
+    cursor: 'pointer',
+    color: {
+      default: 'inherit',
+      ':hover': 'var(--text)',
     },
+    transitionProperty: 'color',
+    transitionDuration: 'var(--duration-fast)',
   },
   icon: {
     marginBlock: '4px',
